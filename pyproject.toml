@@ -1,0 +1,12 @@
+[project]
+name = "dlt-tutorial"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dlt[duckdb,filesystem,parquet,postgres]>=1.27.0",
+    "numpy>=2.4.6",
+    "pandas>=3.0.3",
+    "pydantic>=2.13.4",
+]

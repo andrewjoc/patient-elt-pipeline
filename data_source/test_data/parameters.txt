@@ -1,0 +1,9 @@
+./run_synthea
+-s
+21
+-p
+10
+California
+Oakland
+--exporter.csv.export=True
+--exporter.baseDirectory=../generated_data

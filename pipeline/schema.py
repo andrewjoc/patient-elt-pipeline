@@ -3,6 +3,124 @@ from datetime import date, datetime
 from typing import Optional
 
 
+class Claim(BaseModel):
+    Id: str
+    PATIENTID: str
+    PROVIDERID: str
+    PRIMARYPATIENTINSURANCEID: Optional[str]
+    SECONDARYPATIENTINSURANCEID: Optional[str]
+    DEPARTMENTID: int
+    PATIENTDEPARTMENTID: int
+    DIAGNOSIS1: Optional[str]
+    DIAGNOSIS2: Optional[str]
+    DIAGNOSIS3: Optional[str]
+    DIAGNOSIS4: Optional[str]
+    DIAGNOSIS5: Optional[str]
+    DIAGNOSIS6: Optional[str]
+    DIAGNOSIS7: Optional[str]
+    DIAGNOSIS8: Optional[str]
+    REFERRINGPROVIDERID: Optional[str]
+    APPOINTMENTID: Optional[str]
+    CURRENTILLNESSDATE: datetime
+    SERVICEDATE: datetime
+    SUPERVISINGPROVIDERID: Optional[str]
+    STATUS1: Optional[str]
+    STATUS2: Optional[str]
+    STATUSP: Optional[str]
+    OUTSTANDING1: Optional[float]
+    OUTSTANDING2: Optional[float]
+    OUTSTANDINGP: Optional[float]
+    LASTBILLEDDATE1: Optional[datetime]
+    LASTBILLEDDATE2: Optional[datetime] 
+    LASTBILLEDDATEP: Optional[datetime]
+    HEALTHCARECLAIMTYPEID1: Optional[int]
+    HEALTHCARECLAIMTYPEID2: Optional[int]
+
+class ClaimTransaction(BaseModel):
+    ID: str
+    CLAIMID: str
+    CHARGEID: int
+    PATIENTID: str
+    TYPE: str
+    AMOUNT: Optional[float]
+    METHOD: Optional[str]
+    FROMDATE: Optional[datetime]
+    TODATE: Optional[datetime]
+    PLACEOFSERVICE: str
+    PROCEDURECODE: str
+    MODIFIER1: Optional[str]
+    MODIFIER2: Optional[str]
+    DIAGNOSISREF1: Optional[int]
+    DIAGNOSISREF2: Optional[int]
+    DIAGNOSISREF3: Optional[int]
+    DIAGNOSISREF4: Optional[int]
+    UNITS: Optional[int]
+    DEPARTMENTID: Optional[int]
+    NOTES: Optional[str]
+    UNITAMOUNT: Optional[float]
+    TRANSFEROUTID: Optional[int]
+    TRANSFERTYPE: Optional[str]
+    PAYMENTS: Optional[float]
+    ADJUSTMENTS: Optional[float]
+    TRANSFERS: Optional[float]
+    OUTSTANDING: Optional[float]
+    APPOINTMENTID: Optional[str]
+    LINENOTE: Optional[str]
+    PATIENTINSURANCEID: Optional[str]
+    FEESCHEDULEID: Optional[int]
+    PROVIDERID: str
+    SUPERVISINGPROVIDERID: Optional[str]
+
+class Condition(BaseModel):
+    START: Optional[date]
+    STOP: Optional[date]
+    PATIENT: Optional[str]
+    ENCOUNTER: str
+    SYSTEM: Optional[str]
+    CODE: str
+    DESCRIPTION: Optional[str]
+
+class Encounter(BaseModel):
+    Id: str
+    START: datetime
+    STOP: Optional[datetime]
+    PATIENT: str
+    ORGANIZATION: str
+    PROVIDER: str
+    PAYER: str
+    ENCOUNTERCLASS: str
+    CODE: str
+    DESCRIPTION: str
+    BASE_ENCOUNTER_COST: float
+    TOTAL_CLAIM_COST: float
+    PAYER_COVERAGE: float
+    REASONCODE: Optional[str]
+    REASONDESCRIPTION: Optional[str]
+
+class Observation(BaseModel):
+    DATE: datetime
+    PATIENT: str
+    ENCOUNTER: str
+    CATEGORY: Optional[str]
+    CODE: str
+    DESCRIPTION: str
+    VALUE: str
+    UNITS: Optional[str]
+    TYPE: str
+
+class Organization(BaseModel):
+    Id: str
+    NAME: str
+    ADDRESS: str
+    CITY: str
+    STATE: Optional[str]
+    ZIP: Optional[str]
+    LAT: Optional[float]
+    LON: Optional[float]
+    PHONE: Optional[str]
+    REVENUE: float
+    UTILIZATION: int
+
 class Patient(BaseModel):
     Id: str
     BIRTHDATE: date
@@ -33,37 +151,29 @@ class Patient(BaseModel):
     HEALTHCARE_COVERAGE: Optional[float]
     INCOME: Optional[float]
 
-class Condition(BaseModel):
-    START: Optional[date]
-    STOP: Optional[date]
-    PATIENT: Optional[str]
-    ENCOUNTER: str
-    SYSTEM: Optional[str]
-    CODE: str
-    DESCRIPTION: Optional[str]
-
-class Immunization(BaseModel):
-    DATE: Optional[datetime]
-    PATIENT: Optional[str]
-    ENCOUNTER: str
-    CODE: str
-    DESCRIPTION: Optional[str]
-    BASE_COST: Optional[float]
-
-class Medication(BaseModel):
-    START: Optional[datetime]
-    STOP: Optional[datetime]
-    PATIENT: Optional[str]
-    PAYER: Optional[str]
-    ENCOUNTER: str
-    CODE: str
-    DESCRIPTION: Optional[str]
-    BASE_COST: Optional[float]
-    PAYER_COVERAGE: Optional[float]
-    DISPENSES: Optional[int]
-    TOTALCOST: Optional[float]
-    REASONCODE: Optional[str]
-    REASONDESCRIPTION: Optional[str]
+class Payer(BaseModel):
+    Id: str
+    NAME: str
+    OWNERSHIP: Optional[str]
+    ADDRESS: Optional[str]
+    CITY: Optional[str]
+    STATE_HEADQUARTERED: Optional[str]
+    ZIP: Optional[str]
+    PHONE: Optional[str]
+    AMOUNT_COVERED: float
+    AMOUNT_UNCOVERED: float
+    REVENUE: float
+    COVERED_ENCOUNTERS: int
+    UNCOVERED_ENCOUNTERS: int
+    COVERED_MEDICATIONS: int
+    UNCOVERED_MEDICATIONS: int
+    COVERED_PROCEDURES: int
+    UNCOVERED_PROCEDURES: int
+    COVERED_IMMUNIZATIONS: int
+    UNCOVERED_IMMUNIZATIONS: int
+    UNIQUE_CUSTOMERS: int
+    QOLS_AVG: Optional[float]
+    MEMBER_MONTHS: int
 
 class Procedure(BaseModel):
     START: Optional[datetime]
@@ -76,3 +186,18 @@ class Procedure(BaseModel):
     BASE_COST: Optional[float]
     REASONCODE: Optional[str]
     REASONDESCRIPTION: Optional[str]
+
+class Provider(BaseModel):
+    Id: str
+    ORGANIZATION: str
+    NAME: str
+    GENDER: str
+    SPECIALITY: str
+    ADDRESS: str
+    CITY: str
+    STATE: Optional[str]
+    ZIP: Optional[str]
+    LAT: Optional[float]
+    LON: Optional[float]
+    ENCOUNTERS: int
+    PROCEDURES: int

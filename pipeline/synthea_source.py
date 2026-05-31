@@ -2,7 +2,6 @@ import dlt
 import pandas as pd
 from pathlib import Path
 import os
-import uuid
 from schema import (
     Claim,
     ClaimTransaction,

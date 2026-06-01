@@ -28,7 +28,7 @@ For non-sensitive configuration values, store them in `config.toml`.
 ```
 # config.toml
 
-[destination.filesystem]
+[sources.filesystem]
 bucket_url = "bucket_url"
 
 [destination.filesystem]

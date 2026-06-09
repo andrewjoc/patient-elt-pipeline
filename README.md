@@ -15,7 +15,7 @@ git clone https://github.com/andrewjoc/patient-elt-pipeline.git
 uv sync
 
 # start up the postgres and pgadmin container
-docker compose -f ./db/compose.yaml up -d
+docker compose -f ./postgres_local/compose.yaml up -d
 
 # run the pipeline
 uv run pipeline/run.py
@@ -69,7 +69,7 @@ After running the pipeline, you can visit the following links to view pgadmin an
 
 To stop the container and remove all data from the named volume 
 ```
-docker compose -f ./db/compose.yaml down -v
+docker compose -f ./postgres_local/compose.yaml down -v
 ```
 
 

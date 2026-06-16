@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "dbt-core>=1.11.11",
+    "dbt-postgres>=1.10.0",
     "dlt[duckdb,filesystem,parquet,postgres]>=1.27.0",
     "numpy>=2.4.6",
     "pandas>=3.0.3",

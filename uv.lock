@@ -584,6 +584,7 @@ dependencies = [
     { name = "dlt", extra = ["duckdb", "filesystem", "parquet", "postgres"] },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "psycopg2-binary" },
     { name = "pydantic" },
     { name = "streamlit" },
 ]
@@ -595,6 +596,7 @@ requires-dist = [
     { name = "dlt", extras = ["duckdb", "filesystem", "parquet", "postgres"], specifier = ">=1.27.0" },
     { name = "numpy", specifier = ">=2.4.6" },
     { name = "pandas", specifier = ">=3.0.3" },
+    { name = "psycopg2-binary", specifier = ">=2.9.12" },
     { name = "pydantic", specifier = ">=2.13.4" },
     { name = "streamlit", specifier = ">=1.58.0" },
 ]

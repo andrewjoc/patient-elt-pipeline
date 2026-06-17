@@ -63,7 +63,7 @@ After running the pipeline, you can visit the following links to view pgadmin an
 | | |
 | --- | --- | 
 | pgAdmin | [http://localhost:8080](http://localhost:8080) |
-| Dashboard | localhost |
+| Dashboard | [http://localhost:8501](http://localhost:8501) |
 
 <br>
 

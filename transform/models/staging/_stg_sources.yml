@@ -1,0 +1,10 @@
+version: 2
+sources:
+  - name: raw_data
+    database: patient_elt_pipeline
+    schema: raw
+    tables:
+      - name: patients
+      - name: claims
+      - name: claims_transactions
+      - name: payers

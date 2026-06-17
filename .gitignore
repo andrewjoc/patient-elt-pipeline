@@ -13,3 +13,8 @@ wheels/
 secrets.toml
 
 .DS_Store
+
+# dbt
+transorm/target/
+transform/dbt_packages/
+transform/logs/

@@ -1,0 +1,31 @@
+version: 2
+models:
+  - name: stg_synthea__claims_transactions
+    columns:
+      - name: claim_transaction_id
+        tests:
+          - not null
+      - name: patient_id
+        tests:
+          - not null
+  - name: stg_synthea__claims
+    columns:
+      - name: claim_id
+        tests:
+          - unique
+          - not null
+      - name: patient_id
+        tests:
+          - not null
+  - name: stg_synthea__patients
+    columns:
+      - name: patient_id
+        tests:
+          - unique
+          - not null
+  - name: stg_synthea__payers
+    columns:
+      - name: payer_id
+        tests:
+          - unique
+          - not null
